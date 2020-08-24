@@ -39,8 +39,6 @@ nameEn.pack()
  u koj ima samo eden label(master=_frame) koj go dodaveme so .pack.Grid e samo frameGrid framovite u nego se .pack.Ovoa e praveno za
  sekoja x,y kocka da ima svoja ramka
  
-        ||
-        \/
   
 """
 
