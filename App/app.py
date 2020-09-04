@@ -23,16 +23,18 @@ for mx in range(3):
                 # Label = tk.Label(master=frame, text="{}".format(index) ,width=4,height=4)
                 # Label.pack()            
         
-                index += 1
                 entryDict[index] = entry
+                index += 1
                 
         mainFrame.grid(row=mx,column=my)
 
 largeFrame.pack()
  
 def Solve():
-    pass
-    
+    for key,entry in entryDict.items():
+        info = entry.get()
+        if info != "":
+            print(key,info)    
 
 SolveButton = tk.Button(master=window,text="Solve",width=36,font=("", 12), command=Solve)
 SolveButton.pack()
