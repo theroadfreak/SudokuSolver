@@ -17,19 +17,22 @@ for mx in range(3):
             for y in range(3):
                 frame = tk.Frame(master=mainFrame,relief=tk.SOLID,borderwidth=1)
                 frame.grid(row=x,column=y)
-                entry = tk.Entry(master=frame,width=4)
-                entry.pack()
+                # entry = tk.Entry(master=frame,width=4)
+                # entry.pack()
                 
-                # Label = tk.Label(master=frame, text="{}".format(index) ,width=4,height=4)
-                # Label.pack()            
+                Label = tk.Label(master=frame, text="{}".format(index) ,width=4,height=4)
+                Label.pack()            
         
-                entryDict[index] = entry
+                # entryDict[index] = entry
                 index += 1
                 
         mainFrame.grid(row=mx,column=my)
 
 largeFrame.pack()
  
+def possible(n):
+    pass
+
 def Solve():
     for key,entry in entryDict.items():
         info = entry.get()
