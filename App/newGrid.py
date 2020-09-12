@@ -9,6 +9,7 @@ gridFrame = tk.Frame(master=window)
 commonSet1=(0,1,2)
 commonSet2=(3,4,5)
 entryList = list()
+
 testList = [[5,3,0,0,7,0,0,0,0],
             [6,0,0,1,9,5,0,0,0],
             [0,9,8,0,0,0,0,6,0],
@@ -113,27 +114,26 @@ def possible(x,y,n):
     #         if entryList[y0+i][x0+j].get() == value:
     #             return False
 
-   
     return True
-    
+
 
 def Solve():
-    n=1
     for x in range(9):
         for y in range(9):
             if entryList[y][x].get() == "":
                 for n in range(1,10):
                     if possible(x,y,n):
-                        # print(x,y,n)
-                        # input('print')
                         entryList[y][x].insert(0,str(n))
                         Solve()
                         entryList[y][x].delete(0, tk.END)
-                        #input("more")
                 return
-    input("more")
+    input() #neznam drug nacin da sopram programata , window.mainloop() prodolzuva ama sekoj pat koga Solve() ke imame RuntimeError    
+
     
-SolveButton = tk.Button(master=window,text="Solve",width=36,font=("", 12), command=Solve)
+def Empty():
+    for x in range(9):
+        for y in range(9):
+            entryList[y][x].delete(0, tk.END)
 
 
 ErrorLabel = None
@@ -154,22 +154,32 @@ def clickEvent(*args): #check if ima bukvi ili if >9
                     if int(indexValue) > 9:
                         raise Exception()
                 except:
-                    ErrorLabel = tk.Label(master=window, text="You can only enter numbers! (less than 9)", fg="red")
-                    ErrorLabel.pack()            
-                    SolveButton.config(state=tk.DISABLED)
+                    if ErrorLabel:
+                        pass
+                    else:
+                        ErrorLabel = tk.Label(master=window, text="You can only enter numbers! (less than 9)", fg="red")
+                        ErrorLabel.pack()            
+                        SolveButton.config(state=tk.DISABLED)
+
 
 def testRun():
-    for xx in range(9):
-        for yy in range(9):
-            value = testList[xx][yy]
+    Empty()
+    for x in range(9):
+        for y in range(9):
+            value = testList[x][y]
             if value != 0:
-                entryList[xx][yy].insert(0,str(value))
+                entryList[x][y].insert(0,str(value))
+
+
+SolveButton = tk.Button(master=window,text="Solve",width=36,font=("", 12), command=Solve)
 TestButton = tk.Button(master=window,text="Test Case",width=36,font=("", 12), command=testRun)
+ExitButton = tk.Button(master=window,text="Empty out Grid",width=36,font=("", 12), command=Empty)
 
 
 window.bind("<Button-1>",clickEvent)
 gridFrame.pack()
 SolveButton.pack()
 TestButton.pack()
+ExitButton.pack()
 
 window.mainloop()
