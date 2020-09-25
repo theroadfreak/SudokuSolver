@@ -6,9 +6,7 @@ __pycache__/
 # C extensions
 *.so
 #Custom
-pyvenv.cfg
-Lib/
-Scripts/
+sudokuS/
 # Distribution / packaging
 .Python
 build/
