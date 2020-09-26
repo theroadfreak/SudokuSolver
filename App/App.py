@@ -3,6 +3,9 @@ from time import sleep
 
 
 window = tk.Tk()
+window.title("Dushans Sudoku Solver")
+window.iconbitmap('icon.ico')
+
 gridFrame = tk.Frame(master=window)
 
 
